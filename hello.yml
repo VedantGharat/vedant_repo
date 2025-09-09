@@ -11,13 +11,13 @@
     - name: Show server date and time
       ansible.builtin.debug:
         msg: "Server Date & Time: {{ server_date.stdout }}"
+    
     - name: Ensure directory exists or not
       file: 
         path: /home/awxuser/vedant
         state: directory
         mode: '0777'
       
-        
     - name: Create an empty file
       ansible.builtin.file:
         path: /home/awxuser/vedant/file1.txt
