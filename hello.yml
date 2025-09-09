@@ -15,7 +15,8 @@
     - name: Get server uptime
       ansible.builtin.command: uptime -p
       register: server_uptime
-
+      ignore_errors: yes
+      
     - name: Show server uptime
       ansible.builtin.debug:
         msg: "Server Uptime: {{ server_uptime.stdout }}"
