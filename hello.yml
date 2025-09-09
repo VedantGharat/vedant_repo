@@ -12,28 +12,3 @@
       ansible.builtin.debug:
         msg: "Server Date & Time: {{ server_date.stdout }}"
 
-    - name: Get server uptime
-      ansible.builtin.command: uptime -p
-      register: server_uptime
-      ignore_errors: yes
-      
-    - name: Show server uptime
-      ansible.builtin.debug:
-        msg: "Server Uptime: {{ server_uptime.stdout }}"
-
-    - name: Get server memory usage
-      ansible.builtin.command: free -h
-      register: server_memory
-
-    - name: Show server memory usage
-      ansible.builtin.debug:
-        msg: "{{ server_memory.stdout_lines }}"
-
-    - name: Get disk usage
-      ansible.builtin.command: df -kh
-      register: server_disk
-
-    - name: Show disk usage
-      ansible.builtin.debug:
-        msg: "{{ server_disk.stdout_lines }}"
-
