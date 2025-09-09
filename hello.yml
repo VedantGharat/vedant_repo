@@ -1,5 +1,5 @@
 ---
-- name: Gather Server Information
+- name: Basic Information
   hosts: localhost
   gather_facts: no   # We'll run commands manually
 
@@ -11,4 +11,10 @@
     - name: Show server date and time
       ansible.builtin.debug:
         msg: "Server Date & Time: {{ server_date.stdout }}"
-
+    
+    - name: Create an empty file
+      ansible.builtin.file:
+      path: /home/{{ansible_user}}/file1.txt
+      state: touch
+      mode: '0644'
+      
