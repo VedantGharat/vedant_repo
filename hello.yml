@@ -14,7 +14,7 @@
       
     - name: Create an empty file
       ansible.builtin.file:
-        path: /home/{{ansible_user}}/file1.txt
+        path: /home/awxuser/vedant/file1.txt
         state: touch
         mode: '0644'
       
