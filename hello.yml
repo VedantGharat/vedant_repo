@@ -1,11 +1,12 @@
 ---
-- name: get server uptime
-  hosts: localhost
+- name: Get Server Uptime
+  hosts: all
+  gather_facts: no
   tasks:
-    - name: run uptime command
-      command: uptime
+    - name: Run uptime command
+      command: /usr/bin/uptime
       register: uptime_result
 
-    - name: show uptime
+    - name: Show uptime
       debug:
-        msg: "{{uptime_result}}"
+        msg: "{{ uptime_result.stdout }}"
