@@ -1,26 +1,11 @@
 ---
-- name: Basic Information
-  hosts: localhost
-  gather_facts: no   # We'll run commands manually
-
+- name: get server uptime
+  host: all
   tasks:
-    - name: Get server date and time
-      ansible.builtin.command: date
-      register: server_date
+    - name: run uptime command
+      command: uptime
+      register: uptime_result
 
-    - name: Show server date and time
-      ansible.builtin.debug:
-        msg: "Server Date & Time: {{ server_date.stdout }}"
-    
-    - name: Ensure directory exists or not
-      file: 
-        path: /home/awxuser/vedant
-        state: directory
-        mode: '0777'
-      
-    - name: Create an empty file
-      ansible.builtin.file:
-        path: /home/awxuser/vedant/file1.txt
-        state: touch
-        mode: '0644'
-      
+    - name: show uptime
+      debug:
+        msg: "{{uptime_result}}"
