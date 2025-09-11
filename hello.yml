@@ -1,6 +1,6 @@
 ---
 - name: get server uptime
-  host: all
+  host: localhost
   tasks:
     - name: run uptime command
       command: uptime
